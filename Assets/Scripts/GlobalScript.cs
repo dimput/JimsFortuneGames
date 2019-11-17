@@ -6,6 +6,7 @@ public class GlobalScript : MonoBehaviour
 {
     public static GlobalScript Instance;
     public float health=100;
+    public int life;
     private float healthAwal;
     public int score=0;
     // Start is called before the first frame update

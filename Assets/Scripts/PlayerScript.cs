@@ -8,6 +8,8 @@ public class PlayerScript : MonoBehaviour
 
     private float posX;
     private float posY;
+    private float rotate=0;
+    private bool arahKiri,arahKanan=true;
     private float posZ;
     private int countJump=0;
     public float speed;
@@ -29,15 +31,29 @@ public class PlayerScript : MonoBehaviour
     {
         posX = transform.position.x;
         posY = transform.position.y;
+        print("rotate : " + rotate);
+
         posZ = transform.position.z;
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            if(arahKiri){
+                transform.Rotate(0,180,0);
+                arahKanan = true;
+                arahKiri = false;
+            }
             posX += speed;
             transform.position = new Vector3(posX, posY, posZ);
             charAnimator.SetBool("isWalk",true);
+            rotate = 0;
+
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            if(arahKanan){
+                transform.Rotate(0,180,0);
+                arahKiri = true;
+                arahKanan = false;
+            }
             posX -= speed;
             charAnimator.SetBool("isWalk",true);
             transform.position = new Vector3(posX, posY, posZ);
