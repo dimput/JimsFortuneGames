@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController Instance;
     public GameObject player;
     private float offset;
     private float x = 0.6076f;
@@ -11,6 +12,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         offset = transform.position.x - player.transform.position.x;
     }
 
@@ -21,10 +23,9 @@ public class CameraController : MonoBehaviour
             transform.position = new Vector3(player.transform.position.x+offset,transform.position.y,transform.position.z);
         }
     }
-    void Update()
+
+    public void setLocationCamera()
     {
-        if(dimas == 9){
-            transform.position = new Vector3(0,0,0);
-        }
+        transform.position = new Vector3(1.71f,-1.34f,-10);
     }
 }

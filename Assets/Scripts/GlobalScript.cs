@@ -6,7 +6,10 @@ public class GlobalScript : MonoBehaviour
 {
     public static GlobalScript Instance;
     public float health=100;
+
+    public GameObject panelGameOver,panelScore;
     public int life;
+    public bool gameOver = false;
     private float healthAwal;
     public int score=0;
     // Start is called before the first frame update
@@ -24,5 +27,8 @@ public class GlobalScript : MonoBehaviour
 
     public float getHealthAwal(){
         return healthAwal;
+    }
+    public void setActiveGameOver(){
+        panelGameOver.SetActive(true);
     }
 }

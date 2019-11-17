@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Monster
+  - DeathZone
   layers:
   - Default
   - TransparentFX
