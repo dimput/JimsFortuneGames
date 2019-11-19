@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
     private float posX;
     private float posY;
     private float rotate = 0;
-    private bool arahKiri, arahKanan = true, death = false;
+    public bool arahKiri, arahKanan = true, death = false;
     private float posZ;
     private int countJump = 0;
     public float speed;
@@ -35,7 +35,7 @@ public class PlayerScript : MonoBehaviour
         print("rotate : " + rotate);
 
         posZ = transform.position.z;
-        if (!GlobalScript.Instance.gameOver)
+        if (!GlobalScript.Instance.gamePause)
         {
             if (Input.GetKey(KeyCode.RightArrow))
             {
