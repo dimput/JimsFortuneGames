@@ -35,7 +35,6 @@ public class MoveScript : MonoBehaviour
         if(arahKiri){
             posX -= speed;
         }
-
         transform.position = new Vector3(posX, posY, posZ);
     }
 }

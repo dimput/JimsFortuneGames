@@ -7,7 +7,7 @@ public class GlobalScript : MonoBehaviour
     public static GlobalScript Instance;
     public float health=100;
 
-    public GameObject panelGameOver,panelScore;
+    public GameObject panelGameOver,panelScore,panelPause;
     public int life;
     public bool gameOver = false,gamePause=false;
     private float healthAwal;
@@ -32,5 +32,13 @@ public class GlobalScript : MonoBehaviour
     }
     public void setActiveGameOver(){
         panelGameOver.SetActive(true);
+    }
+    public void setActivePanelPause(){
+        panelPause.SetActive(true);
+        gamePause=true;
+    }
+    public void setClosePanelPause(){
+        panelPause.SetActive(false);
+        gamePause=false;
     }
 }

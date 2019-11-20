@@ -32,7 +32,6 @@ public class PlayerScript : MonoBehaviour
     {
         posX = transform.position.x;
         posY = transform.position.y;
-        print("rotate : " + rotate);
 
         posZ = transform.position.z;
         if (!GlobalScript.Instance.gamePause)
@@ -117,6 +116,11 @@ public class PlayerScript : MonoBehaviour
         {
             // print ("kena");
             death=true;
+        }
+        if (other.gameObject.tag == "FireMonster")
+        {
+            // print ("kena");
+            GlobalScript.Instance.health -= 20;
         }
     }
 }
