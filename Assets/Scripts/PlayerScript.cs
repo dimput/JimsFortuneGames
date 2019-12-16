@@ -12,12 +12,14 @@ public class PlayerScript : MonoBehaviour
     public bool arahKiri, arahKanan = true, death = false;
     private float posZ;
     private int countJump = 0;
+    SpriteRenderer m_SpriteRenderer;
     public float speed;
     // Start is called before the first frame update
     private Rigidbody2D playerRb;
     Animator charAnimator;
     void Start()
     {
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
         Instance = this;
         charAnimator = GetComponent<Animator>();
         playerRb = gameObject.GetComponent<Rigidbody2D>();
@@ -107,10 +109,10 @@ public class PlayerScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.gameObject.tag == "Monster")
         {
-            // print ("kena");
-            GlobalScript.Instance.health -= 50;
+            print ("kena");
         }
         if (other.gameObject.tag == "DeathZone")
         {
@@ -119,8 +121,26 @@ public class PlayerScript : MonoBehaviour
         }
         if (other.gameObject.tag == "FireMonster")
         {
-            // print ("kena");
-            GlobalScript.Instance.health -= 20;
+            GlobalScript.Instance.health -= 0.5f;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "FireMonster")
+        {
+            GlobalScript.Instance.health -= 0.5f;
+            m_SpriteRenderer.color = Color.red;
+        }
+        if (other.gameObject.tag == "Monster")
+        {
+            GlobalScript.Instance.health -= 1f;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "FireMonster")
+        {
+            m_SpriteRenderer.color = Color.white;
         }
     }
 }
