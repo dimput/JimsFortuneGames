@@ -64,7 +64,7 @@ public class PlayerScript : MonoBehaviour
             }
             if ((Input.GetKeyDown(KeyCode.UpArrow)) && (countJump < 1))
             {
-                playerRb.AddForce(new Vector3(0f, 1f, 0f) * 10, ForceMode2D.Impulse);
+                playerRb.AddForce(new Vector3(0f, 1f, 0f) * 8, ForceMode2D.Impulse);
                 charAnimator.SetBool("isJump", true);
                 countJump += 1;
             }
