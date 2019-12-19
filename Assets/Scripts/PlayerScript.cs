@@ -85,7 +85,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (death)
         {
-            transform.localPosition = new Vector3(2.41f, -0.81f, 73);
+            transform.localPosition = new Vector3(CameraController.Instance.batasKiri, CameraController.Instance.batasBawah+1, 73);
             CameraController.Instance.setLocationCamera();
             if (GlobalScript.Instance.life > 1)
             {

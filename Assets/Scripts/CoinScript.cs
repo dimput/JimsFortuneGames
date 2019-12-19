@@ -20,6 +20,7 @@ public class CoinScript : MonoBehaviour
             // Text my_text = GameObject.Find("Middleground/Coins/Canvas/score").GetComponent<Text>();
             // print ("kena");
             Destroy(this.gameObject);
+            SFXManager.Instance.PlayCoinSFX();
             GlobalScript.Instance.score += 1;
         }        
     }

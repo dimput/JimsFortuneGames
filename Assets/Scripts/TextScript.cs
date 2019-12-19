@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TextScript : MonoBehaviour
 {
-    public Text score;
+    public Text score,scoreNextLevel;
     public Text life;
 
     // Start is called before the first frame update
@@ -18,6 +18,7 @@ public class TextScript : MonoBehaviour
     void Update()
     {
         score.GetComponent<Text>().text = GlobalScript.Instance.score.ToString();
+        scoreNextLevel.GetComponent<Text>().text = GlobalScript.Instance.score.ToString();
         life.GetComponent<Text>().text = GlobalScript.Instance.life.ToString();
     }
 }

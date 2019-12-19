@@ -26,6 +26,7 @@ public class BulletSpawnner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameObject obj = Instantiate(objectToSpawn, this.transform);
+            SFXManager.Instance.PlayShotSFX();
             // Set posisi object agar berada di sebelah kanan kamera
             spawnPosY = PlayerScript.Instance.transform.position.y + 3;
             if (PlayerScript.Instance.arahKiri)

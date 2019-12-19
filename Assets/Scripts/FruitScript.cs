@@ -20,6 +20,7 @@ public class FruitScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if( other.gameObject.name == "player"){
             // print ("kena");
+            SFXManager.Instance.PlayFruitSFX();
             Destroy(this.gameObject);
             if(GlobalScript.Instance.getHealthAwal()-GlobalScript.Instance.health<50){
                 GlobalScript.Instance.health += GlobalScript.Instance.getHealthAwal()-GlobalScript.Instance.health;

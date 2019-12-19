@@ -5,10 +5,11 @@ using UnityEngine;
 public class BosScript : MonoBehaviour
 {
     public static BosScript Instance;
-    public GameObject healthBar;
+    public ParticleSystem dot1;
+    public GameObject healthBar,firecollider1;
     private Animator charAnimator;
     public float healthMonster=3000;
-    private float timer=3,timer2=2,timer3=2;
+    private float timer=3,timer2=4,timer3=2,timerFire=1;
 
     public bool arahKanan=false,arahKiri=true,isFire;
     private float posX,posY,posZ,spawnPosX,spawnPosY;
@@ -35,6 +36,64 @@ public class BosScript : MonoBehaviour
         if(healthMonster<=0){
             Destroy(this.gameObject);
             GlobalScript.Instance.score+=100;
+            GlobalScript.Instance.win=true;
+        }
+        if (!GlobalScript.Instance.gamePause)
+        {
+            timer -= Time.deltaTime;
+            if (timer >= 0)
+            {
+                posX = transform.position.x;
+                posX += speed;
+                transform.position = new Vector3(posX, posY, posZ);
+                charAnimator.SetBool("isWalk", true);
+            }
+            else
+            {
+                timer2 -= Time.deltaTime;
+                if (timer2 >= 0)
+                {
+                    transform.position = new Vector3(posX, posY, posZ);
+                    charAnimator.SetBool("isFire", true);
+                    charAnimator.SetBool("isWalk", false);
+                    timerFire-=Time.deltaTime;
+                    if(timerFire <= 0){
+                        dot1.Play();
+                        firecollider1.SetActive(true);
+                    }
+                }
+                else
+                {
+                    timer3 -= Time.deltaTime;
+                    if (timer3 >= 0)
+                    {
+                        transform.position = new Vector3(posX, posY, posZ);
+                        charAnimator.SetBool("isFire", false);
+                        dot1.Stop();
+                        firecollider1.SetActive(false);
+                        isFire = false;
+                    }
+                    else
+                    {
+                        timerFire=1f;
+                        timer = 3;
+                        timer2 = 4;
+                        timer3 = 2;
+                        transform.Rotate(0, 180, 0);
+                        speed = speed * -1;
+                        if (arahKanan)
+                        {
+                            arahKiri = true;
+                            arahKanan = false;
+                        }
+                        else
+                        {
+                            arahKiri = false;
+                            arahKanan = true;
+                        }
+                    }
+                }
+            }
         }
     } 
     private void OnTriggerEnter2D(Collider2D other) {
